@@ -1,37 +1,27 @@
-import React, { useState } from 'react';
-import Clock from './Clock';
+import React, { Component } from 'react';
+import Header from './components/header/Header.jsx';
+import Calendar from './components/calendar/Calendar.jsx';
 
-function App() {
-  const [visible, setVisible] = useState(true);
+import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 
-  const btnText = () => {
-    return visible ? 'Hide Time' : 'Show Time';
+import './common.scss';
+
+class App extends Component {
+  state = {
+    weekStartDate: new Date(),
   };
 
-  return (
-    <>
-      <button
-        className="btn"
-        onClick={() => setVisible(visible ? false : true)}
-      >
-        {btnText()}
-      </button>
-      <div className="main">
-        {visible && (
-          <>
-            <Clock location="New York" offset={0} />
-            <Clock location="Kiyv" offset={2} />
-            <Clock location="London" offset={-5} />
-          </>
-        )}
-      </div>
-    </>
-  );
+  render() {
+    const { weekStartDate } = this.state;
+    const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+
+    return (
+      <>
+        <Header />
+        <Calendar weekDates={weekDates} />
+      </>
+    );
+  }
 }
 
 export default App;
-
-// London (смещение 0), Kyiv (смещение 2), New York (смещение -5)
-
-// 1. App должна содержать кнопку, которая спрячет все компоненты Clock с экрана.
-// 2. Не забудьте почистить интервал перед тем, как компонента удаляется со страницы
