@@ -6,19 +6,19 @@ import './week.scss';
 const Week = ({ weekDates, events }) => {
   return (
     <div className="calendar__week">
-      {weekDates.map((dayStart) => {
+      {weekDates.map(dayStart => {
         const dayEnd = new Date(dayStart.getTime()).setHours(
-          dayStart.getHours() + 24
+          dayStart.getHours() + 24,
         );
 
         //getting all events from the day we will render
         const dayEvents = events.filter(
-          (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
+          event => event.dateFrom > dayStart && event.dateTo < dayEnd,
         );
 
         return (
           <Day
-            key={dayStart.getDate()}
+            key={Math.random()}
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
           />
@@ -29,3 +29,5 @@ const Week = ({ weekDates, events }) => {
 };
 
 export default Week;
+
+// key={dayStart.getDate()}
