@@ -20,6 +20,10 @@ const App = () => {
 
 export default App;
 
+// weekDates ==> [Mon Sep 12 2022 00:00:00 GMT+0300
+// (Восточная Европа, летнее время), ... , Sun Sep 18 2022 00:00:00 GMT+0300
+// (Восточная Европа, летнее время)]
+
 // old
 /*
 class App extends Component {

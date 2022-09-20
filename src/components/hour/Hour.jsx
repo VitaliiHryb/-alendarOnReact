@@ -9,10 +9,10 @@ const Hour = ({ dataHour, hourEvents }) => {
       {/* if no events in the current hour nothing will render here */}
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(
-          dateFrom.getMinutes()
+          dateFrom.getMinutes(),
         )}`;
         const eventEnd = `${dateTo.getHours()}:${formatMins(
-          dateTo.getMinutes()
+          dateTo.getMinutes(),
         )}`;
 
         return (
