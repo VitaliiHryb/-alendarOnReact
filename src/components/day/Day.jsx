@@ -30,3 +30,6 @@ export default Day;
 // dayEvents ==> [] ... []
 
 // key={dataDay + hour}
+
+// Число текущего дня должно подсвечиваться
+// day-label__day-number_today
