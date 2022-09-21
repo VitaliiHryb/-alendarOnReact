@@ -7,6 +7,9 @@
     display: flex;
     height: 100px;
     padding-left: 48px;
+
+    // При прокрутке хедер (дни недели) должен оставаться на месте
+    position: sticky;
   }
 
   &__body {
@@ -60,8 +63,19 @@
     text-transform: uppercase;
   }
 
+  &__day-name_today {
+    margin-top: 3px;
+  }
+
   &__day-number {
     font-size: 22px;
+  }
+
+  &__day-number_today {
+    color: #fff;
+    background-color: #0743b3;
+    border: 3px solid transparent;
+    border-radius: 50%;
   }
 }
 
