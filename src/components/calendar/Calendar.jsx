@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
 import events from '../../gateway/events';
+import { getWeekStartDate, generateWeekRange } from '../../utils/dateUtils';
 
 import './calendar.scss';
 
-const Calendar = ({ weekDates }) => {
+const Calendar = ({ weekStartDate }) => {
+  const [weekDates, setWeekDates] = useState(
+    generateWeekRange(getWeekStartDate(weekStartDate)),
+  );
+
+  useEffect(() => {
+    setWeekDates(() => generateWeekRange(getWeekStartDate(weekStartDate)));
+  }, [weekStartDate]);
+
   const [state, setState] = useState(events);
 
   return (

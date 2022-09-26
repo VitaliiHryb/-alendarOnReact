@@ -1,10 +1,10 @@
 import React from 'react';
+// import isCurrentDay from './dateUtils';
 
 import { days } from '../../utils/dateUtils.js';
 
 const Navigation = ({ weekDates }) => {
-  const today = new Date();
-  const currentDay = today.getDay();
+  const currentDay = new Date().getDay();
   return (
     <header className="calendar__header">
       {weekDates.map(dayDate => (
