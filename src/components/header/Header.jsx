@@ -1,9 +1,31 @@
-import React, { useState } from 'react';
-// import moment from 'moment';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 
+import {
+  getWeekStartDate,
+  getNextMonday,
+  months,
+} from '../../utils/dateUtils.js';
 import './header.scss';
 
-const Header = ({ nextWeek, prevWeek, addCurrentDay }) => {
+const Header = ({ nextWeek, prevWeek, addCurrentDay, weekStartDate }) => {
+  const monday = getWeekStartDate(weekStartDate);
+
+  const [IsCurrentMonth, setIsCurrentMonth] = useState(
+    months[monday.getMonth()],
+  );
+  const [IsNextMonth, setIsNextMonth] = useState(
+    months[getNextMonday(monday).getMonth()],
+  );
+
+  useEffect(() => {
+    setIsCurrentMonth(() => months[monday.getMonth()]);
+  }, [weekStartDate]);
+
+  useEffect(() => {
+    setIsNextMonth(() => months[getNextMonday(monday).getMonth()]);
+  }, [weekStartDate]);
+
   return (
     <header className="header">
       <button className="button create-event-btn">
@@ -22,7 +44,14 @@ const Header = ({ nextWeek, prevWeek, addCurrentDay }) => {
         <button onClick={nextWeek} className="icon-button navigation__nav-icon">
           <i className="fas fa-chevron-right"></i>
         </button>
-        <span className="navigation__displayed-month"></span>
+        <span className="navigation__displayed-month">{`${IsCurrentMonth.substring(
+          0,
+          3,
+        )} ${
+          IsCurrentMonth === IsNextMonth
+            ? ''
+            : `- ${IsNextMonth.substring(0, 3)}`
+        }`}</span>
       </div>
     </header>
   );
