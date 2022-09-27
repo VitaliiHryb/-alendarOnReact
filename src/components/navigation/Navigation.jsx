@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import isCurrentDay from './dateUtils';
 
 import { days } from '../../utils/dateUtils.js';
 
 const Navigation = ({ weekDates }) => {
-  const currentDay = new Date().getDay();
+  const currentDay = new Date().getDate();
+
   return (
     <header className="calendar__header">
       {weekDates.map(dayDate => (
         <div key={Math.random()} className="calendar__day-label day-label">
           <span
             className={
-              dayDate.getDay() === currentDay
+              dayDate.getDate() === currentDay
                 ? 'day-label__day-name day-label__day-name_today'
                 : 'day-label__day-name'
             }
@@ -20,7 +21,7 @@ const Navigation = ({ weekDates }) => {
           </span>
           <span
             className={
-              dayDate.getDay() === currentDay
+              dayDate.getDate() === currentDay
                 ? 'day-label__day-number day-label__day-number_today'
                 : 'day-label__day-number'
             }

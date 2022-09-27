@@ -7,22 +7,6 @@ import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 
 import './common.scss';
 const App = () => {
-  /*
-  const [today, setFirstWeeKDay] = useState(moment());
-
-  const handlePrevWeek = () => {
-    setFirstWeeKDay(prev => prev.subtract(1, 'week'));
-  };
-
-  const handleNextWeek = () => {
-    setFirstWeeKDay(prev => prev.add(1, 'week'));
-  };
-
-  const handleCurrentWeek = () => {
-    setFirstWeeKDay(prev => moment());
-  };
-  */
-
   // const [weekStartDate, setWeekStartDate] = useState(new Date());
   const [weekStartDate, setWeekStartDate] = useState(new Date());
 
