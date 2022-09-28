@@ -4,7 +4,8 @@ import React, { useEffect } from 'react';
 import { days } from '../../utils/dateUtils.js';
 
 const Navigation = ({ weekDates }) => {
-  const currentDay = new Date().getDate();
+  const now = new Date();
+  const currentDay = now.getDate();
 
   return (
     <header className="calendar__header">
@@ -12,7 +13,8 @@ const Navigation = ({ weekDates }) => {
         <div key={Math.random()} className="calendar__day-label day-label">
           <span
             className={
-              dayDate.getDate() === currentDay
+              dayDate.getDate() === currentDay &&
+              dayDate.getMonth() === now.getMonth()
                 ? 'day-label__day-name day-label__day-name_today'
                 : 'day-label__day-name'
             }
@@ -21,7 +23,8 @@ const Navigation = ({ weekDates }) => {
           </span>
           <span
             className={
-              dayDate.getDate() === currentDay
+              dayDate.getDate() === currentDay &&
+              dayDate.getMonth() === now.getMonth()
                 ? 'day-label__day-number day-label__day-number_today'
                 : 'day-label__day-number'
             }
