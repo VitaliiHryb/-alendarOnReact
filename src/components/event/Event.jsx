@@ -2,6 +2,7 @@ import React from 'react';
 
 import './event.scss';
 
+/*
 const eventsList = [
   {
     id: 1,
@@ -46,21 +47,35 @@ const eventsList = [
     time: 1664994810833,
   },
 ];
-
+*/
 // console.log(eventsList.map(el => new Date(el.time)));
 
-const Event = ({ height, marginTop, title, time }) => {
-  const eventStyle = {
-    height,
-    marginTop,
-  };
+const Event = ({ height, marginTop, title, time, testInfo }) => {
+  // const eventStyle = {
+  //   height,
+  //   marginTop,
+  // };
 
   return (
-    <div style={eventStyle} className="event">
+    <div className="event">
       <div className="event__title">{title}</div>
-      <div className="event__time">{time}</div>
+      <div className="event__time">{`${new Date(time).getHours()}:00`}</div>
     </div>
   );
 };
 
 export default Event;
+
+// const Event = ({ height, marginTop, title, time }) => {
+//   const eventStyle = {
+//     height,
+//     marginTop,
+//   };
+
+//   return (
+//     <div style={eventStyle} className="event">
+//       <div className="event__title">{title}</div>
+//       <div className="event__time">{time}</div>
+//     </div>
+//   );
+// };
