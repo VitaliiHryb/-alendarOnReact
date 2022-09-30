@@ -15,6 +15,12 @@
     margin-bottom: 8px;
   }
 
+  &__time {
+    width: 100%;
+    color: black;
+    font-size: 12px;
+  }
+
   &:hover {
     font-weight: bold;
     background-color: red;

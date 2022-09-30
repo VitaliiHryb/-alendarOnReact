@@ -50,16 +50,16 @@ const eventsList = [
 */
 // console.log(eventsList.map(el => new Date(el.time)));
 
-const Event = ({ height, marginTop, title, time, testInfo }) => {
-  // const eventStyle = {
-  //   height,
-  //   marginTop,
-  // };
+const Event = ({ height, marginTop, title, time }) => {
+  const eventStyle = {
+    height,
+    marginTop,
+  };
 
   return (
-    <div className="event">
+    <div style={eventStyle} className="event">
       <div className="event__title">{title}</div>
-      <div className="event__time">{`${new Date(time).getHours()}:00`}</div>
+      <div className="event__time">{time}</div>
     </div>
   );
 };

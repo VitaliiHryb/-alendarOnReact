@@ -3,7 +3,7 @@ import Hour from '../hour/Hour';
 
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents, testInfo }) => {
+const Day = ({ dataDay, dayEvents }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index); // ==> [1, 2, ... 24]
@@ -12,17 +12,12 @@ const Day = ({ dataDay, dayEvents, testInfo }) => {
     <div className="calendar__day" data-day={dataDay}>
       {hours.map(hour => {
         //getting all events from the day we will render
-        const testEvents = testInfo.filter(
-          event => new Date(event.time).getHours() === hour,
-        ); // ==> [] ... [] // 24 empty arrays
+        const hourEvents = dayEvents.filter(event => {
+          return new Date(event.dateFrom).getHours() === hour;
+        }); // ==> [] ... [] // 24 empty arrays
 
         return (
-          <Hour
-            key={Math.random()}
-            dataHour={hour}
-            // hourEvents={hourEvents}
-            testInfo={testEvents}
-          />
+          <Hour key={Math.random()} dataHour={hour} hourEvents={hourEvents} />
         );
       })}
     </div>

@@ -7,21 +7,26 @@ const Hour = ({ dataHour, hourEvents, testInfo }) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {/* if no events in the current hour nothing will render here */}
-
-      {testInfo.map(({ id, time, title }) => {
-        const eventHour = new Date(time).getHours();
-        // if (eventHour === dataHour) {
+      {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
+        const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
+          new Date(dateFrom).getMinutes(),
+        )}`;
+        const eventEnd = `${new Date(dateTo).getHours()}:${formatMins(
+          new Date(dateTo).getMinutes(),
+        )}`;
         return (
           <Event
-            key={`${id} + ${Math.random()}`}
+            key={`${id}${Math.random()}`}
             //calculating event height = duration of event in minutes
-            // height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)}
-            // marginTop={dateFrom.getMinutes()}
-            time={time}
+            height={
+              (new Date(dateTo).getTime() - new Date(dateFrom).getTime()) /
+              (1000 * 60)
+            }
+            marginTop={new Date(dateFrom).getMinutes()}
+            time={`${eventStart} - ${eventEnd}`}
             title={title}
           />
         );
-        // }
       })}
     </div>
   );
