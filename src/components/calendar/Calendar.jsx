@@ -21,6 +21,7 @@ const Calendar = ({ weekStartDate }) => {
   // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
   /////////////////////////////////////////////////
+  const [state, setState] = useState([]);
   let eventsData = fetchEvents();
 
   let eventsList = eventsData.then(result => {
@@ -31,15 +32,14 @@ const Calendar = ({ weekStartDate }) => {
     return result;
   });
 
-  const events = [];
-  eventsList.then(data => events.push(data));
-
-  /* useEffect(() => {
-    setState(() => eventsList.then(data => data));
-  }, [weekStartDate]); */
+  useEffect(() => {
+    eventsList.then(result => {
+      setState(result);
+    });
+  }, [weekStartDate]);
 
   /////////////////////////////////////////////////
-  const [state, setState] = useState(events);
+  // const [state, setState] = useState(events);
 
   return (
     <section className="calendar">

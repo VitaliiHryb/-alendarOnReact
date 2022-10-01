@@ -14,6 +14,7 @@ const Week = ({ weekDates, events }) => {
 
         //getting all events from the day we will render
         const dayEvents = events.filter(event => {
+          // console.log(event);
           return event.dateFrom > dayStart && event.dateTo < dayEnd;
         }); // [] ... []
 
