@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
-import events from '../../gateway/events';
+// import events from '../../gateway/events';
+import { fetchEvents } from '../../gateway/events';
 import { getWeekStartDate, generateWeekRange } from '../../utils/dateUtils';
 
 import './calendar.scss';
@@ -17,6 +18,27 @@ const Calendar = ({ weekStartDate }) => {
     setWeekDates(() => generateWeekRange(getWeekStartDate(weekStartDate)));
   }, [weekStartDate]);
 
+  // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+
+  /////////////////////////////////////////////////
+  let eventsData = fetchEvents();
+
+  let eventsList = eventsData.then(result => {
+    result.forEach(event => {
+      event.dateFrom = new Date(event.dateFrom);
+      event.dateTo = new Date(event.dateTo);
+    });
+    return result;
+  });
+
+  const events = [];
+  eventsList.then(data => events.push(data));
+
+  /* useEffect(() => {
+    setState(() => eventsList.then(data => data));
+  }, [weekStartDate]); */
+
+  /////////////////////////////////////////////////
   const [state, setState] = useState(events);
 
   return (

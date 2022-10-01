@@ -13,7 +13,7 @@ const Day = ({ dataDay, dayEvents }) => {
       {hours.map(hour => {
         //getting all events from the day we will render
         const hourEvents = dayEvents.filter(event => {
-          return new Date(event.dateFrom).getHours() === hour;
+          return event.dateFrom.getHours() === hour;
         }); // ==> [] ... [] // 24 empty arrays
 
         return (
