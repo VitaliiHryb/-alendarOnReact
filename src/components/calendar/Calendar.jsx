@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
-// import events from '../../gateway/events';
+import events from '../../gateway/events';
 import { fetchEvents } from '../../gateway/events';
 import { getWeekStartDate, generateWeekRange } from '../../utils/dateUtils';
 
@@ -21,6 +21,7 @@ const Calendar = ({ weekStartDate }) => {
   // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
   /////////////////////////////////////////////////
+  /*
   const [state, setState] = useState([]);
   let eventsData = fetchEvents();
 
@@ -36,10 +37,10 @@ const Calendar = ({ weekStartDate }) => {
     eventsList.then(result => {
       setState(result);
     });
-  }, [weekStartDate]);
-
+  }, []);
+  */
   /////////////////////////////////////////////////
-  // const [state, setState] = useState(events);
+  const [state, setState] = useState(events);
 
   return (
     <section className="calendar">

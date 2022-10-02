@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
+import Modal from './components/modal/Modal';
+import createEvent from './gateway/events';
 import moment from 'moment';
 
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
@@ -27,6 +29,34 @@ const App = () => {
     setWeekStartDate(() => new Date());
   };
 
+  /////////////////////////    This works    ///////////////////////
+  const [isForm, setIsForm] = useState(false);
+
+  const openFormHandler = () => {
+    setIsForm(() => true);
+  };
+
+  const closeFormHandler = () => {
+    setIsForm(() => false);
+  };
+  //////////////////////////////////////////////////////////////////////
+  const [isUpdateData, setIsUpdateData] = useState({
+    id: '',
+    title: '',
+    description: '',
+    dateFrom: '',
+    dateTo: '',
+  });
+
+  // useEffect(() => {
+  //   setIsUpdateData(() => console.log('something will be there'));
+  // }, []);
+
+  const handleSubmit = () => {
+    createEvent(isUpdateData);
+  };
+  //////////////////////////////////////////////////////////////////////
+
   return (
     <>
       <Header
@@ -34,8 +64,15 @@ const App = () => {
         prevWeek={handlePrevWeek}
         addCurrentDay={handleCurrentWeek}
         weekStartDate={weekStartDate}
+        openFormHandler={openFormHandler}
       />
       <Calendar weekStartDate={weekStartDate} />
+      {isForm ? (
+        <Modal
+          closeFormHandler={closeFormHandler}
+          handleSubmit={handleSubmit}
+        />
+      ) : null}
     </>
   );
 };
@@ -45,6 +82,16 @@ export default App;
 // weekDates ==> [Mon Sep 12 2022 00:00:00 GMT+0300
 // (Восточная Европа, летнее время), ... , Sun Sep 18 2022 00:00:00 GMT+0300
 // (Восточная Европа, летнее время)]
+
+/*
+<Modal
+  {...this.state.popupData}
+  hideModal={this.handleHidePopup}
+  handleSubmit={this.handleSubmit}
+  deleteEvent={this.deleteEvent}
+  isEvent={this.state.isEvent}
+/>;
+*/
 
 // old
 /*

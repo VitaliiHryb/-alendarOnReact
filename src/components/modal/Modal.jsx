@@ -1,13 +1,28 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './modal.scss';
 
-const Modal = () => {
+const Modal = ({ closeFormHandler, handleSubmit }) => {
+  //////////////////////////////////////////////////////////// input
+  const [isValue, setIsValue] = useState('');
+
+  useEffect(() => {
+    setIsValue(() => console.log('something will be there'));
+  }, []);
+
+  const handleChange = e => console.log(e.target.value);
+  ////////////////////////////////////////////////////////////
+
   return (
     <div className="modal overlay">
       <div className="modal__content">
         <div className="create-event">
-          <button className="create-event__close-btn">+</button>
+          <button
+            onClick={closeFormHandler}
+            className="create-event__close-btn"
+          >
+            +
+          </button>
           <form className="event-form">
             <input
               type="text"
@@ -31,7 +46,11 @@ const Modal = () => {
               placeholder="Description"
               className="event-form__field"
             ></textarea>
-            <button type="submit" className="event-form__submit-btn">
+            <button
+              onSubmit={handleSubmit}
+              type="submit"
+              className="event-form__submit-btn"
+            >
               Create
             </button>
           </form>

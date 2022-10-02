@@ -8,7 +8,13 @@ import {
 } from '../../utils/dateUtils.js';
 import './header.scss';
 
-const Header = ({ nextWeek, prevWeek, addCurrentDay, weekStartDate }) => {
+const Header = ({
+  nextWeek,
+  prevWeek,
+  addCurrentDay,
+  weekStartDate,
+  openFormHandler,
+}) => {
   const monday = getWeekStartDate(weekStartDate);
 
   const [IsCurrentMonth, setIsCurrentMonth] = useState(
@@ -28,7 +34,7 @@ const Header = ({ nextWeek, prevWeek, addCurrentDay, weekStartDate }) => {
 
   return (
     <header className="header">
-      <button className="button create-event-btn">
+      <button onClick={openFormHandler} className="button create-event-btn">
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">
