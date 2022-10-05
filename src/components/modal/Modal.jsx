@@ -1,16 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { createEvent } from '../../gateway/events';
 
 import './modal.scss';
 
-const Modal = ({ closeFormHandler, handleSubmit }) => {
+const Modal = ({ closeFormHandler, renderNewData }) => {
   //////////////////////////////////////////////////////////// input
-  const [isValue, setIsValue] = useState('');
+  const [newEvent, setNewEvent] = useState({
+    id: '',
+    title: '',
+    description: '',
+    startTime: '',
+    endTime: '',
+    date: '',
+  });
 
-  useEffect(() => {
-    setIsValue(() => console.log('something will be there'));
-  }, []);
+  //
+  const handleChange = e => {
+    const { name, value } = e.target;
 
-  const handleChange = e => console.log(e.target.value);
+    setNewEvent({ ...newEvent, [name]: value });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    // console.log(newEvent); /// => createEvent()
+    const { id, title, description, startTime, endTime, date } = newEvent;
+    let dateFrom = new Date(`${date} ${startTime}`).getTime();
+    let dateTo = new Date(`${date} ${endTime}`).getTime();
+    const newEventData = { id, title, description, dateFrom, dateTo };
+    // console.log(newEventData);
+    createEvent(newEventData);
+    closeFormHandler();
+  };
+
   ////////////////////////////////////////////////////////////
 
   return (
@@ -23,33 +45,50 @@ const Modal = ({ closeFormHandler, handleSubmit }) => {
           >
             +
           </button>
-          <form className="event-form">
+          <form className="event-form" onSubmit={handleSubmit}>
             <input
               type="text"
               name="title"
               placeholder="Title"
               className="event-form__field"
+              value={newEvent.title}
+              onChange={handleChange}
             />
             <div className="event-form__time">
-              <input type="date" name="date" className="event-form__field" />
+              <input
+                type="date"
+                name="date"
+                className="event-form__field"
+                value={newEvent.date}
+                onChange={handleChange}
+              />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
                 onChange={handleChange}
+                value={newEvent.startTime}
               />
               <span>-</span>
-              <input type="time" name="endTime" className="event-form__field" />
+              <input
+                type="time"
+                name="endTime"
+                className="event-form__field"
+                value={newEvent.endTime}
+                onChange={handleChange}
+              />
             </div>
             <textarea
               name="description"
               placeholder="Description"
               className="event-form__field"
+              onChange={handleChange}
+              value={newEvent.description}
             ></textarea>
             <button
-              onSubmit={handleSubmit}
               type="submit"
               className="event-form__submit-btn"
+              onClick={renderNewData}
             >
               Create
             </button>

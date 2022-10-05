@@ -29,7 +29,7 @@ const App = () => {
     setWeekStartDate(() => new Date());
   };
 
-  /////////////////////////    This works    ///////////////////////
+  /////////////////////////    Code below works    ///////////////////////
   const [isForm, setIsForm] = useState(false);
 
   const openFormHandler = () => {
@@ -39,23 +39,16 @@ const App = () => {
   const closeFormHandler = () => {
     setIsForm(() => false);
   };
-  //////////////////////////////////////////////////////////////////////
-  const [isUpdateData, setIsUpdateData] = useState({
-    id: '',
-    title: '',
-    description: '',
-    dateFrom: '',
-    dateTo: '',
-  });
+  ////////////////////////// Testing
+  const [reRender, setReRender] = useState(false);
 
-  // useEffect(() => {
-  //   setIsUpdateData(() => console.log('something will be there'));
-  // }, []);
-
-  const handleSubmit = () => {
-    createEvent(isUpdateData);
+  const renderNewData = () => {
+    if (reRender === false) {
+      setReRender(true);
+    } else {
+      setReRender(false);
+    }
   };
-  //////////////////////////////////////////////////////////////////////
 
   return (
     <>
@@ -66,11 +59,11 @@ const App = () => {
         weekStartDate={weekStartDate}
         openFormHandler={openFormHandler}
       />
-      <Calendar weekStartDate={weekStartDate} />
+      <Calendar weekStartDate={weekStartDate} reRender={reRender} />
       {isForm ? (
         <Modal
           closeFormHandler={closeFormHandler}
-          handleSubmit={handleSubmit}
+          renderNewData={renderNewData}
         />
       ) : null}
     </>

@@ -51,6 +51,7 @@ const events = [
 ];
 
 const baseUrl = 'https://63375d775327df4c43d370d7.mockapi.io/events';
+// const baseUrl = 'https://crudcrud.com/api/1430cc7245ce4988b582f8968d514a09';
 
 export const createEvent = eventData => {
   return fetch(baseUrl, {

@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
-import events from '../../gateway/events';
+// import events from '../../gateway/events';
 import { fetchEvents } from '../../gateway/events';
 import { getWeekStartDate, generateWeekRange } from '../../utils/dateUtils';
 
 import './calendar.scss';
 
-const Calendar = ({ weekStartDate }) => {
+const Calendar = ({ weekStartDate, reRender }) => {
   const [weekDates, setWeekDates] = useState(
     generateWeekRange(getWeekStartDate(weekStartDate)),
   );
@@ -21,26 +21,26 @@ const Calendar = ({ weekStartDate }) => {
   // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
   /////////////////////////////////////////////////
-  /*
+
   const [state, setState] = useState([]);
   let eventsData = fetchEvents();
 
-  let eventsList = eventsData.then(result => {
-    result.forEach(event => {
-      event.dateFrom = new Date(event.dateFrom);
-      event.dateTo = new Date(event.dateTo);
-    });
-    return result;
-  });
+  // let eventsList = eventsData.then(result => {
+  //   result.forEach(event => {
+  //     event.dateFrom = new Date(event.dateFrom);
+  //     event.dateTo = new Date(event.dateTo);
+  //   });
+  //   return result;
+  // });
 
   useEffect(() => {
-    eventsList.then(result => {
+    eventsData.then(result => {
       setState(result);
     });
-  }, []);
-  */
+  }, [weekStartDate, reRender]);
+
   /////////////////////////////////////////////////
-  const [state, setState] = useState(events);
+  // const [state, setState] = useState(events);
 
   return (
     <section className="calendar">
