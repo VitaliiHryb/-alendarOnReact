@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal';
-import createEvent from './gateway/events';
-import moment from 'moment';
-
-import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 
 import './common.scss';
 const App = () => {
@@ -29,7 +25,6 @@ const App = () => {
     setWeekStartDate(() => new Date());
   };
 
-  /////////////////////////    Code below works    ///////////////////////
   const [isForm, setIsForm] = useState(false);
 
   const openFormHandler = () => {
@@ -44,9 +39,9 @@ const App = () => {
 
   const renderNewData = () => {
     if (reRender === false) {
-      setReRender(true);
+      setReRender(() => true);
     } else {
-      setReRender(false);
+      setReRender(() => false);
     }
   };
 
@@ -59,7 +54,7 @@ const App = () => {
         weekStartDate={weekStartDate}
         openFormHandler={openFormHandler}
       />
-      <Calendar weekStartDate={weekStartDate} reRender={reRender} />
+      <Calendar weekStartDate={weekStartDate} renderNewData={renderNewData} />
       {isForm ? (
         <Modal
           closeFormHandler={closeFormHandler}

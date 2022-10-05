@@ -23,12 +23,10 @@ const Modal = ({ closeFormHandler, renderNewData }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // console.log(newEvent); /// => createEvent()
     const { id, title, description, startTime, endTime, date } = newEvent;
-    let dateFrom = new Date(`${date} ${startTime}`).getTime();
-    let dateTo = new Date(`${date} ${endTime}`).getTime();
+    let dateFrom = new Date(`${date} ${startTime}`);
+    let dateTo = new Date(`${date} ${endTime}`);
     const newEventData = { id, title, description, dateFrom, dateTo };
-    // console.log(newEventData);
     createEvent(newEventData);
     closeFormHandler();
   };

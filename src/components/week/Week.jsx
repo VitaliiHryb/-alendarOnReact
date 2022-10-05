@@ -15,7 +15,10 @@ const Week = ({ weekDates, events }) => {
         //getting all events from the day we will render
         const dayEvents = events.filter(event => {
           // console.log(event);
-          return event.dateFrom > dayStart && event.dateTo < dayEnd;
+          return (
+            new Date(event.dateFrom) > dayStart &&
+            new Date(event.dateTo) < dayEnd
+          );
         }); // [] ... []
 
         // dayStart.getDate() ==> 12, 13, 14, 15, 16, 17, 18 (seven days of the week)

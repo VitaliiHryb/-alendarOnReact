@@ -23,18 +23,9 @@ const Calendar = ({ weekStartDate, reRender }) => {
   /////////////////////////////////////////////////
 
   const [state, setState] = useState([]);
-  let eventsData = fetchEvents();
-
-  // let eventsList = eventsData.then(result => {
-  //   result.forEach(event => {
-  //     event.dateFrom = new Date(event.dateFrom);
-  //     event.dateTo = new Date(event.dateTo);
-  //   });
-  //   return result;
-  // });
 
   useEffect(() => {
-    eventsData.then(result => {
+    fetchEvents().then(result => {
       setState(result);
     });
   }, [weekStartDate, reRender]);
