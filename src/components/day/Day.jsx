@@ -1,9 +1,10 @@
 import React from 'react';
 import Hour from '../hour/Hour';
+// import moment from 'moment';
 
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents }) => {
+const Day = ({ dataDay, dayEvents, dayId, isRedLine }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index); // ==> [1, 2, ... 24]
@@ -55,6 +56,30 @@ const Day = ({ dataDay, dayEvents, testInfo }) => {
             hourEvents={hourEvents}
             testInfo={testInfo}
           />
+        );
+      })}
+    </div>
+  );
+};
+*/
+
+/////////// works ///////////////////
+/*
+const Day = ({ dataDay, dayEvents, dayId }) => {
+  const hours = Array(24)
+    .fill()
+    .map((val, index) => index); // ==> [1, 2, ... 24]
+
+  return (
+    <div className="calendar__day" data-day={dataDay}>
+      {hours.map(hour => {
+        //getting all events from the day we will render
+        const hourEvents = dayEvents.filter(event => {
+          return new Date(event.dateFrom).getHours() === hour;
+        }); // ==> [] ... [] // 24 empty arrays
+
+        return (
+          <Hour key={Math.random()} dataHour={hour} hourEvents={hourEvents} />
         );
       })}
     </div>

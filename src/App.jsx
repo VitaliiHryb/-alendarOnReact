@@ -38,12 +38,13 @@ const App = () => {
   const [reRender, setReRender] = useState(false);
 
   const renderNewData = () => {
-    if (reRender === false) {
-      setReRender(true);
-    }
-    if (reRender === true) {
-      setReRender(false);
-    }
+    setReRender(prevState => {
+      if (prevState) {
+        return false;
+      } else {
+        return true;
+      }
+    });
   };
 
   return (

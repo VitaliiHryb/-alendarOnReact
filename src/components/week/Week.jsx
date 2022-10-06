@@ -1,5 +1,6 @@
 import React from 'react';
 import Day from '../day/Day';
+import moment from 'moment';
 
 import './week.scss';
 
@@ -29,6 +30,7 @@ const Week = ({ weekDates, events, renderNewData }) => {
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
             renderNewData={renderNewData}
+            dayId={dayStart.getDate()}
           />
         );
       })}
