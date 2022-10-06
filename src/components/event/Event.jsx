@@ -1,15 +1,19 @@
 import React from 'react';
-
+import { deleteEvents } from '../../gateway/events';
 import './event.scss';
 
-const Event = ({ height, marginTop, title, time }) => {
+const Event = ({ height, marginTop, title, time, id }) => {
   const eventStyle = {
     height,
     marginTop,
   };
 
+  const deleteEvent = () => {
+    deleteEvents(id);
+  };
+
   return (
-    <div style={eventStyle} className="event">
+    <div style={eventStyle} className="event" onClick={deleteEvent}>
       <div className="event__title">{title}</div>
       <div className="event__time">{time}</div>
     </div>

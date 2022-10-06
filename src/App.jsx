@@ -34,14 +34,15 @@ const App = () => {
   const closeFormHandler = () => {
     setIsForm(() => false);
   };
-  ////////////////////////// Testing
+
   const [reRender, setReRender] = useState(false);
 
   const renderNewData = () => {
     if (reRender === false) {
-      setReRender(() => true);
-    } else {
-      setReRender(() => false);
+      setReRender(true);
+    }
+    if (reRender === true) {
+      setReRender(false);
     }
   };
 
@@ -54,7 +55,11 @@ const App = () => {
         weekStartDate={weekStartDate}
         openFormHandler={openFormHandler}
       />
-      <Calendar weekStartDate={weekStartDate} renderNewData={renderNewData} />
+      <Calendar
+        weekStartDate={weekStartDate}
+        renderNewData={renderNewData}
+        reRender={reRender}
+      />
       {isForm ? (
         <Modal
           closeFormHandler={closeFormHandler}
