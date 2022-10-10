@@ -1,5 +1,4 @@
 import React from 'react';
-import Redline from '../redline/RedLine';
 import Event from '../event/Event';
 import { formatMins } from '../../../src/utils/dateUtils.js';
 
