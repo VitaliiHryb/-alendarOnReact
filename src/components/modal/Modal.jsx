@@ -29,6 +29,7 @@ const Modal = ({ closeFormHandler, renderNewData }) => {
     const newEventData = { id, title, description, dateFrom, dateTo };
     createEvent(newEventData);
     closeFormHandler();
+    renderNewData();
   };
 
   ////////////////////////////////////////////////////////////

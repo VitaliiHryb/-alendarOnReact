@@ -4,7 +4,15 @@ import Hour from '../hour/Hour';
 
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents, dayId, isRedLine }) => {
+const Day = ({
+  dataDay,
+  dayEvents,
+  dayId,
+  isRedLine,
+  renderNewData,
+  isToday,
+  Now,
+}) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index); // ==> [1, 2, ... 24]
@@ -17,8 +25,22 @@ const Day = ({ dataDay, dayEvents, dayId, isRedLine }) => {
           return new Date(event.dateFrom).getHours() === hour;
         }); // ==> [] ... [] // 24 empty arrays
 
-        return (
-          <Hour key={Math.random()} dataHour={hour} hourEvents={hourEvents} />
+        return isToday === true && hour === Now.getHours() ? (
+          <div key={Math.random()} style={{ borderTop: '2px solid red' }}>
+            <Hour
+              key={Math.random()}
+              dataHour={hour}
+              hourEvents={hourEvents}
+              renderNewData={renderNewData}
+            />
+          </div>
+        ) : (
+          <Hour
+            key={Math.random()}
+            dataHour={hour}
+            hourEvents={hourEvents}
+            renderNewData={renderNewData}
+          />
         );
       })}
     </div>

@@ -9,7 +9,7 @@ import { getWeekStartDate, generateWeekRange } from '../../utils/dateUtils';
 
 import './calendar.scss';
 
-const Calendar = ({ weekStartDate, reRender, renderNewData }) => {
+const Calendar = ({ weekStartDate, reRender, renderNewData, isToday, Now }) => {
   const [weekDates, setWeekDates] = useState(
     generateWeekRange(getWeekStartDate(weekStartDate)),
   );
@@ -18,16 +18,13 @@ const Calendar = ({ weekStartDate, reRender, renderNewData }) => {
     setWeekDates(() => generateWeekRange(getWeekStartDate(weekStartDate)));
   }, [weekStartDate]);
 
-  // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-
-  /////////////////////////////////////////////////
-
   const [state, setState] = useState([]);
 
   useEffect(() => {
     fetchEvents().then(result => {
       setState(result);
     });
+    // console.log(`shoud re-render ${reRender}`);
   }, [weekStartDate, reRender]);
 
   return (
@@ -40,6 +37,10 @@ const Calendar = ({ weekStartDate, reRender, renderNewData }) => {
             weekDates={weekDates}
             events={state}
             renderNewData={renderNewData}
+            isToday={
+              (isToday === true && Now.getMonth()) === weekStartDate.getMonth()
+            }
+            Now={Now}
           />
         </div>
       </div>

@@ -5,6 +5,7 @@ import Modal from './components/modal/Modal';
 
 import './common.scss';
 const App = () => {
+  const Now = new Date();
   const [weekStartDate, setWeekStartDate] = useState(new Date());
 
   const handlePrevWeek = () => {
@@ -35,15 +36,12 @@ const App = () => {
     setIsForm(() => false);
   };
 
-  const [reRender, setReRender] = useState(false);
+  const [reRender, setReRender] = useState(0);
 
   const renderNewData = () => {
-    setReRender(prevState => {
-      if (prevState) {
-        return false;
-      } else {
-        return true;
-      }
+    setReRender(cout => {
+      cout = cout + 1;
+      return cout;
     });
   };
 
@@ -60,6 +58,8 @@ const App = () => {
         weekStartDate={weekStartDate}
         renderNewData={renderNewData}
         reRender={reRender}
+        isToday={Now.getFullYear() === weekStartDate.getFullYear()}
+        Now={Now}
       />
       {isForm ? (
         <Modal

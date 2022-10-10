@@ -2,7 +2,7 @@ import React from 'react';
 import { deleteEvents } from '../../gateway/events';
 import './event.scss';
 
-const Event = ({ height, marginTop, title, time, id }) => {
+const Event = ({ height, marginTop, title, time, id, renderNewData }) => {
   const eventStyle = {
     height,
     marginTop,
@@ -10,6 +10,7 @@ const Event = ({ height, marginTop, title, time, id }) => {
 
   const deleteEvent = () => {
     deleteEvents(id);
+    renderNewData();
   };
 
   return (

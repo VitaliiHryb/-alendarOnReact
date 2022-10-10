@@ -4,7 +4,8 @@ import moment from 'moment';
 
 import './week.scss';
 
-const Week = ({ weekDates, events, renderNewData }) => {
+const Week = ({ weekDates, events, renderNewData, isToday, Now }) => {
+  // console.log(events);
   return (
     <div className="calendar__week">
       {weekDates.map(dayStart => {
@@ -22,7 +23,8 @@ const Week = ({ weekDates, events, renderNewData }) => {
           );
         }); // [] ... []
 
-        // dayStart.getDate() ==> 12, 13, 14, 15, 16, 17, 18 (seven days of the week)
+        // console.log(dayStart.getDate()); // ==> 12, 13, 14, 15, 16, 17, 18 (seven days of the week)
+        // isToday = isToday.getDate() === dayStart.getDate();
 
         return (
           <Day
@@ -31,6 +33,8 @@ const Week = ({ weekDates, events, renderNewData }) => {
             dayEvents={dayEvents}
             renderNewData={renderNewData}
             dayId={dayStart.getDate()}
+            isToday={isToday === true && Now.getDay() === dayStart.getDay()}
+            Now={Now}
           />
         );
       })}
