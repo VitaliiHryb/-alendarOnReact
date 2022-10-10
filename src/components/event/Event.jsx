@@ -9,8 +9,7 @@ const Event = ({ height, marginTop, title, time, id, renderNewData }) => {
   };
 
   const deleteEvent = () => {
-    deleteEvents(id);
-    renderNewData();
+    deleteEvents(id).then(() => renderNewData());
   };
 
   return (

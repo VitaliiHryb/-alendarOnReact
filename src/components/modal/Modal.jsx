@@ -27,9 +27,8 @@ const Modal = ({ closeFormHandler, renderNewData }) => {
     let dateFrom = new Date(`${date} ${startTime}`);
     let dateTo = new Date(`${date} ${endTime}`);
     const newEventData = { id, title, description, dateFrom, dateTo };
-    createEvent(newEventData);
+    createEvent(newEventData).then(() => renderNewData());
     closeFormHandler();
-    renderNewData();
   };
 
   ////////////////////////////////////////////////////////////
