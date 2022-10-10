@@ -5,7 +5,14 @@ import Modal from './components/modal/Modal';
 
 import './common.scss';
 const App = () => {
-  const Now = new Date();
+  const [Now, setNow] = useState(new Date());
+  useEffect(() => {
+    setInterval(() => {
+      setTimeout(() => {
+        setNow(new Date());
+      });
+    }, 60000);
+  });
   const [weekStartDate, setWeekStartDate] = useState(new Date());
 
   const handlePrevWeek = () => {
