@@ -36,7 +36,7 @@ const Day = ({
         }); // ==> [] ... [] // 24 empty arrays
 
         return isToday === true && hour === Now.getHours() ? (
-          <div key={Math.random()} style={redLineStyle}>
+          <div className="redline" key={Math.random()} style={redLineStyle}>
             <Hour
               key={Math.random()}
               dataHour={hour}
