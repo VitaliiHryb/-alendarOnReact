@@ -43,12 +43,11 @@ const App = () => {
     setIsForm(() => false);
   };
 
-  const [reRender, setReRender] = useState(0);
+  const [reRender, setReRender] = useState(false);
 
   const renderNewData = () => {
-    setReRender(cout => {
-      cout = cout + 1;
-      return cout;
+    setReRender(data => {
+      return data === false ? true : false;
     });
   };
 

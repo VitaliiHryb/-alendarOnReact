@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Hour from '../hour/Hour';
 // import moment from 'moment';
 
@@ -17,6 +17,16 @@ const Day = ({
     .fill()
     .map((val, index) => index); // ==> [1, 2, ... 24]
 
+  const [marginTop, setMarginTop] = useState(Now.getMinutes());
+  useEffect(() => {
+    setMarginTop(Now.getMinutes());
+  }, [Now]);
+
+  const redLineStyle = {
+    borderTop: '2px solid red',
+    marginTop,
+  };
+
   return (
     <div className="calendar__day" data-day={dataDay}>
       {hours.map(hour => {
@@ -26,7 +36,7 @@ const Day = ({
         }); // ==> [] ... [] // 24 empty arrays
 
         return isToday === true && hour === Now.getHours() ? (
-          <div key={Math.random()} style={{ borderTop: '2px solid red' }}>
+          <div key={Math.random()} style={redLineStyle}>
             <Hour
               key={Math.random()}
               dataHour={hour}

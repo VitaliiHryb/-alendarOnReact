@@ -83,11 +83,7 @@ const Modal = ({ closeFormHandler, renderNewData }) => {
               onChange={handleChange}
               value={newEvent.description}
             ></textarea>
-            <button
-              type="submit"
-              className="event-form__submit-btn"
-              onClick={renderNewData}
-            >
+            <button type="submit" className="event-form__submit-btn">
               Create
             </button>
           </form>
