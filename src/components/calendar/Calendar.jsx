@@ -37,9 +37,7 @@ const Calendar = ({ weekStartDate, reRender, renderNewData, isToday, Now }) => {
             weekDates={weekDates}
             events={state}
             renderNewData={renderNewData}
-            isToday={
-              (isToday === true && Now.getMonth()) === weekStartDate.getMonth()
-            }
+            isToday={isToday}
             Now={Now}
           />
         </div>

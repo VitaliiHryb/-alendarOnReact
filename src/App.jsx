@@ -64,7 +64,11 @@ const App = () => {
         weekStartDate={weekStartDate}
         renderNewData={renderNewData}
         reRender={reRender}
-        isToday={Now.getFullYear() === weekStartDate.getFullYear()}
+        isToday={
+          Now.getFullYear() === weekStartDate.getFullYear() &&
+          Now.getDate() === weekStartDate.getDate() &&
+          Now.getMonth() === weekStartDate.getMonth()
+        }
         Now={Now}
       />
       {isForm ? (
