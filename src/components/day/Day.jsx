@@ -4,15 +4,7 @@ import Hour from '../hour/Hour';
 
 import './day.scss';
 
-const Day = ({
-  dataDay,
-  dayEvents,
-  dayId,
-  isRedLine,
-  renderNewData,
-  isToday,
-  Now,
-}) => {
+const Day = ({ dataDay, dayEvents, renderNewData, isToday, Now }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index); // ==> [1, 2, ... 24]
@@ -25,6 +17,7 @@ const Day = ({
   const redLineStyle = {
     borderTop: '2px solid red',
     marginTop,
+    height: `${59 - marginTop}px`,
   };
 
   return (

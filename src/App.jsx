@@ -7,11 +7,13 @@ import './common.scss';
 const App = () => {
   const [Now, setNow] = useState(new Date());
   useEffect(() => {
-    setInterval(() => {
-      setTimeout(() => {
-        setNow(new Date());
-      });
+    const interval = setInterval(() => {
+      setNow(new Date());
     }, 60000);
+
+    return () => {
+      clearInterval(interval);
+    };
   });
   const [weekStartDate, setWeekStartDate] = useState(new Date());
 

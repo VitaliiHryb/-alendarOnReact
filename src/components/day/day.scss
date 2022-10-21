@@ -1,3 +1,8 @@
+.redline {
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+
 .redline::before {
   display: inline-block;
   position: relative;

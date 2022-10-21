@@ -1,6 +1,6 @@
 import React from 'react';
 import Day from '../day/Day';
-import moment from 'moment';
+// import moment from 'moment';
 
 import './week.scss';
 
