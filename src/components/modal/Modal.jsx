@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createEvent } from '../../gateway/events';
-
+import moment from 'moment';
 import './modal.scss';
 
 const Modal = ({ closeFormHandler, renderNewData }) => {
@@ -11,7 +11,7 @@ const Modal = ({ closeFormHandler, renderNewData }) => {
     description: '',
     startTime: '',
     endTime: '',
-    date: '',
+    date: `${moment().format('yyyy-MM-DD')}`,
   });
 
   //
@@ -30,8 +30,6 @@ const Modal = ({ closeFormHandler, renderNewData }) => {
     createEvent(newEventData).then(() => renderNewData());
     closeFormHandler();
   };
-
-  ////////////////////////////////////////////////////////////
 
   return (
     <div className="modal overlay">

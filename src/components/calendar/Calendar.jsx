@@ -23,7 +23,6 @@ const Calendar = ({ weekStartDate, reRender, renderNewData, isToday, Now }) => {
     fetchEvents().then(result => {
       setState(result);
     });
-    // console.log(`shoud re-render ${reRender}`);
   }, [weekStartDate, reRender]);
 
   return (

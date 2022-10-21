@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Hour from '../hour/Hour';
-// import moment from 'moment';
 
 import './day.scss';
 
@@ -29,14 +28,11 @@ const Day = ({ dataDay, dayEvents, renderNewData, isToday, Now }) => {
         }); // ==> [] ... [] // 24 empty arrays
 
         return isToday === true && hour === Now.getHours() ? (
-          <div className="redline" key={Math.random()} style={redLineStyle}>
-            <Hour
-              key={Math.random()}
-              dataHour={hour}
-              hourEvents={hourEvents}
-              renderNewData={renderNewData}
-            />
-          </div>
+          <div
+            className="redline"
+            key={Math.random()}
+            style={redLineStyle}
+          ></div>
         ) : (
           <Hour
             key={Math.random()}
