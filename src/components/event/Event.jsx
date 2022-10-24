@@ -1,6 +1,7 @@
 import React from 'react';
 import { deleteEvents } from '../../gateway/events';
 import './event.scss';
+import PropTypes from 'prop-types';
 
 const Event = ({ height, marginTop, title, time, id, renderNewData }) => {
   const eventStyle = {
@@ -20,18 +21,13 @@ const Event = ({ height, marginTop, title, time, id, renderNewData }) => {
   );
 };
 
+Event.propTypes = {
+  height: PropTypes.number,
+  marginTop: PropTypes.number,
+  title: PropTypes.string,
+  time: PropTypes.object,
+  id: PropTypes.number,
+  renderNewData: PropTypes.func,
+};
+
 export default Event;
-
-// const Event = ({ height, marginTop, title, time }) => {
-//   const eventStyle = {
-//     height,
-//     marginTop,
-//   };
-
-//   return (
-//     <div style={eventStyle} className="event">
-//       <div className="event__title">{title}</div>
-//       <div className="event__time">{time}</div>
-//     </div>
-//   );
-// };

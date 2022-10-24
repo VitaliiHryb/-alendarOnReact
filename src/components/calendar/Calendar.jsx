@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import PropTypes from 'prop-types';
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
@@ -44,35 +44,12 @@ const Calendar = ({ weekStartDate, reRender, renderNewData, isToday, Now }) => {
   );
 };
 
+Calendar.propTypes = {
+  weekStartDate: PropTypes.object,
+  reRender: PropTypes.bool,
+  renderNewData: PropTypes.func,
+  isToday: PropTypes.bool,
+  Now: PropTypes.object,
+};
+
 export default Calendar;
-
-// state ==> [{id: 1, title: 'Go to the gym', description: 'some text here',
-// dateFrom: Tue Sep 15 2020 10:15:00 GMT+0300 (Восточная Европа, летнее время),
-// dateTo: Tue Sep 15 2020 15:00:00 GMT+0300 (Восточная Европа, летнее время)}, ... , {}]
-
-// weekDates ==> [Mon Sep 12 2022 00:00:00 GMT+0300
-// (Восточная Европа, летнее время), ... , Sun Sep 18 2022 00:00:00 GMT+0300
-// (Восточная Европа, летнее время)]
-
-// old
-// class Calendar extends Component {
-//   state = {
-//     events,
-//   };
-
-//   render() {
-//     const { weekDates } = this.props;
-
-//     return (
-//       <section className="calendar">
-//         <Navigation weekDates={weekDates} />
-//         <div className="calendar__body">
-//           <div className="calendar__week-container">
-//             <Sidebar />
-//             <Week weekDates={weekDates} events={this.state.events} />
-//           </div>
-//         </div>
-//       </section>
-//     );
-//   }
-// }

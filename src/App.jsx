@@ -47,7 +47,7 @@ const App = () => {
 
   const [reRender, setReRender] = useState(false);
 
-  const renderNewData = () => {
+  const renderNewData = function () {
     setReRender(data => {
       return data === false ? true : false;
     });
@@ -84,38 +84,3 @@ const App = () => {
 };
 
 export default App;
-
-// weekDates ==> [Mon Sep 12 2022 00:00:00 GMT+0300
-// (Восточная Европа, летнее время), ... , Sun Sep 18 2022 00:00:00 GMT+0300
-// (Восточная Европа, летнее время)]
-
-/*
-<Modal
-  {...this.state.popupData}
-  hideModal={this.handleHidePopup}
-  handleSubmit={this.handleSubmit}
-  deleteEvent={this.deleteEvent}
-  isEvent={this.state.isEvent}
-/>;
-*/
-
-// old
-/*
-class App extends Component {
-  state = {
-    weekStartDate: new Date(),
-  };
-
-  render() {
-    const { weekStartDate } = this.state;
-    const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-
-    return (
-      <>
-        <Header />
-        <Calendar weekDates={weekDates} />
-      </>
-    );
-  }
-}
-*/
