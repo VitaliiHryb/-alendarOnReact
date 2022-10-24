@@ -1,8 +1,10 @@
 # Calendar
 
-### [Site link](https://6320d188b05c001ad5136912--cheerful-fairy-0f1c8a.netlify.app/)
+### [Netify Site link](https://6320d188b05c001ad5136912--cheerful-fairy-0f1c8a.netlify.app/)
 
-#### Layout supports mobile (up-to-400) and desktop (up-to-1400) versions
+### [GitHub Pages Site link](https://vitaliihryb.github.io/CalendarWithReact/)
+
+#### Layout supports desktop version
 
 ### The tech stack is:
 
@@ -12,6 +14,9 @@
 - [Sass (Scss)](https://sass-lang.com/)
 - [BEM methodology](https://en.bem.info/methodology/)
 - [React JavaScript library](https://reactjs.org/)
+- [moment library](https://momentjs.com/)
+- [prop-types library](https://www.npmjs.com/package/prop-types)
+- [React useState, useEffect Hooks](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)
 
 ## Author
 
