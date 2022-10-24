@@ -1,6 +1,6 @@
 # Calendar
 
-### [Netify Site link](vitalii-hryb-react-calendar.netlify.app)
+### [Netify Site link](https://vitalii-hryb-react-calendar.netlify.app/)
 
 ### [GitHub Pages Site link](https://vitaliihryb.github.io/CalendarWithReact/)
 
