@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
-
+import PropTypes from 'prop-types';
 import {
   getWeekStartDate,
   getNextMonday,
@@ -61,6 +60,14 @@ const Header = ({
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  nextWeek: PropTypes.func,
+  prevWeek: PropTypes.func,
+  addCurrentDay: PropTypes.func,
+  weekStartDate: PropTypes.object,
+  openFormHandler: PropTypes.func,
 };
 
 export default Header;
