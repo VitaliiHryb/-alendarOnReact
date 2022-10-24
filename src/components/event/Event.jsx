@@ -25,8 +25,8 @@ Event.propTypes = {
   height: PropTypes.number,
   marginTop: PropTypes.number,
   title: PropTypes.string,
-  time: PropTypes.object,
-  id: PropTypes.number,
+  time: PropTypes.string,
+  id: PropTypes.string,
   renderNewData: PropTypes.func,
 };
 
