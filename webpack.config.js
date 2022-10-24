@@ -35,13 +35,7 @@ module.exports = (env, argv) => {
     plugins: [
       new webpack.ProgressPlugin(),
       new CopyPlugin({
-        patterns: [
-          { from: '_redirects', to: '' },
-          // {
-          //   from: 'source/url/to/images/folder',
-          //   to: 'build/url/to/images/folder',
-          // },
-        ],
+        patterns: [{ from: '_redirects', to: '' }],
       }),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
